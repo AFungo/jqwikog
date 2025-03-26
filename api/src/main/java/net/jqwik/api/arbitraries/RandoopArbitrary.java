@@ -20,6 +20,8 @@ public interface RandoopArbitrary<T> extends Arbitrary<T>{
 
 	RandoopArbitrary<T> setIntegersLiterals(int min, int max);
 
+	RandoopArbitrary<T> setDoublesLiterals(double min, double max);
+
 	RandoopArbitrary<T> setStringsLiterals(Set<String> strings);
 
 	RandoopArbitrary<T> setDependencies(Set<Class<?>> dependencies);

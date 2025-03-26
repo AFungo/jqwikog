@@ -17,7 +17,14 @@ public class RandoopConfigurators extends ArbitraryConfiguratorBase {
 		if (arbitrary instanceof RandoopArbitrary) {
 			RandoopArbitrary<?> randoopArbitrary = (RandoopArbitrary<?>) arbitrary;
 			return randoopArbitrary.setIntegersLiterals(range.min(), range.max());
-					   //greaterOrEqual(range.min()).lessOrEqual(range.max()!=Integer.MAX_VALUE ? range.max() : 10);
+		}
+		return arbitrary;
+	}
+
+	public Arbitrary<?> configure(Arbitrary<?> arbitrary, DoubleRange range) {
+		if (arbitrary instanceof RandoopArbitrary) {
+			RandoopArbitrary<?> randoopArbitrary = (RandoopArbitrary<?>) arbitrary;
+			return randoopArbitrary.setDoublesLiterals(range.min(), range.max());
 		}
 		return arbitrary;
 	}
