@@ -2,30 +2,51 @@
 [![Javadocs](http://javadoc.io/badge/net.jqwik/jqwik-api.svg)](https://jqwik.net/docs/current/javadoc/index.html)
 [![CI Status](https://github.com/jqwik-team/jqwik/workflows/CI/badge.svg?branch=main)](https://github.com/jqwik-team/jqwik/actions)
 
-# jqwik
+# jqwikOG
 
-An alternative 
-[test engine for the JUnit 5 platform](https://junit.org/junit5/docs/current/user-guide/#launcher-api-engines-custom)
-that focuses on Property-Based Testing.
+**jqwikOG** is a modified version of [jqwik](http://jqwik.net), an alternative [test engine for the JUnit 5 platform](https://junit.org/junit5/docs/current/user-guide/#launcher-api-engines-custom) that focuses on Property-Based Testing. This version integrates an object generator based on method sequence generation inspired by [Randoop](https://randoop.github.io/randoop/).
 
-
-## See the [jqwik website](http://jqwik.net) for further details and documentation.
+## Website & Documentation
+See the [jqwik website](http://jqwik.net) for original documentation and usage examples.
 
 ## Quick Start
-JAVA version = openjdk 11.0.22 2024-01-16
-             = openjdk version "1.8.0_392"
+- **Java Version**: openjdk 11.0.22 (2024-01-16)
+- **Build Project**:
+  ```bash
+  ./gradlew build -x engine:test -x kotlin:test
+  ```
 
-Build = ./gradlew build -x engine:test -x kotlin:test
-Run randoop class test = ./gradlew :engine:test --tests examples.randoopTest.RandoopTest
-Run a single randoop test = ./gradlew :engine:test --tests examples.randoopTest.RandoopTest.testName
+## Example Properties
+Examples using the modified jqwikOG engine are located in:
+```
+engine/src/test/java/experiments/randoopTest
+```
 
-./gradlew build -x engine:test -x kotlin:test -x time:test -x web:test -x api:javadoc
-./gradlew :engine:compileTestJava
+### Run a Single or Multiple Property-Based Tests
+To run individual or specific test cases, use:
+```bash
+./gradlew :engine:test --tests experiments.randoopTest.RandoopTest.testName
+```
+You can also use wildcards to run multiple tests:
+```bash
+./gradlew :engine:test --tests "experiments.randoopTest.*"
+```
+
+## Docker Support
+You can use Docker to build and run jqwikOG without installing dependencies directly.
+
+### Build Docker Image
+```bash
 docker build -t myproject .
+```
+
+### Run Docker Container Interactively
+```bash
 docker run -it myproject
+```
 
-docker run -it -v ~/fungo/JqwikWR/:/app/experimentos.txt myproject bash -c "./gradlew build -x engine:test -x kotlin:test -x time:test -x web:test -x api:javadoc && ./gradlew engine:compileTestJava && python3 script_config.py > /app/experimentos.txt"
+## Contributing
+Feel free to fork the repository, open issues, or submit pull requests to contribute to the project.
 
-docker run -it -v ~/fungo/JqwikWR/experimentos.txt:/app/experimentos.txt myproject bash -c "./gradlew build -x engine:test -x kotlin:test -x time:test -x web:test -x api:javadoc && ./gradlew engine:compileTestJava && python3 script_config.py > /app/experimentos.txt"
-
-scp investigador@192.168.0.144:~/nolasco/alloy-mr-reducer/output/SingleNode/allow_epa_loops_true/EPA_AWARE/1000/0/mrs.txt ~/Documents/tesis/EPA-Nolasco
+## License
+This project is based on jqwik and distributed under the same license unless otherwise specified.
