@@ -25,7 +25,7 @@ engine/src/test/java/experiments/randoopTest
 ### Run a Single or Multiple Property-Based Tests
 To run individual or specific test cases, use:
 ```bash
-./gradlew :engine:test --tests experiments.randoopTest.RandoopTest.testName
+./gradlew :engine:test --tests "experiments.PilasTest.pilasTest"
 ```
 You can also use wildcards to run multiple tests:
 ```bash
@@ -42,7 +42,7 @@ docker build -t myproject .
 
 ### Run Docker Container Interactively
 ```bash
-docker run -it myproject
+docker run -it jqwikog bash -c "./gradlew :engine:test --tests "experiments.PilasTest.pilasTest""
 ```
 
 ## Contributing
