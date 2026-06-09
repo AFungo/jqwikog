@@ -18,7 +18,7 @@ public class DefaultArbitraries {
 		providers.add(new ListArbitraryProvider());
 		providers.add(new RandoopArbitraryProvider());//NOTE: add here my randoop, here we add to the list of objects generators
 		providers.add(new SetArbitraryProvider());
-		providers.add(new HashMapArbitraryProvider());
+		//providers.add(new HashMapArbitraryProvider());
 		providers.add(new EntryArbitraryProvider());
 		providers.add(new StreamArbitraryProvider());
 		providers.add(new OptionalArbitraryProvider());
