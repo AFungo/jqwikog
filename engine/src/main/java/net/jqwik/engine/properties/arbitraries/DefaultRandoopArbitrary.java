@@ -87,8 +87,15 @@ public class DefaultRandoopArbitrary<T> extends TypedCloneable implements Randoo
 	@Override
 	public RandoopArbitrary<T> setIntegersLiterals(int min, int max) {
 		DefaultRandoopArbitrary<T> clone = typedClone();
-		clone.intLiterals = Arbitraries.integers().between(min, max).
-									   set().sample();
+		if (min > max) {
+			throw new IllegalArgumentException("the min bound is greater than max bound");
+		}
+		// Original version (returns a sample of values between min and max)
+		//clone.intLiterals = Arbitraries.integers().between(min, max).
+		//							   set().sample();
+		for (int i = min; i < max; i++) {
+			clone.intLiterals.add(i);
+		}
 		return clone;
 	}
 
